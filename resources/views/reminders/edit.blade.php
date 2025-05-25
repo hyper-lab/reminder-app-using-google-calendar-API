@@ -53,7 +53,23 @@
                                           min="{{ $minDateTime ?? '' }}" /> {{-- Add min attribute --}}
                             <x-input-error :messages="$errors->get('reminder_time')" class="mt-2" />
                         </div>
-
+                        <div class="mt-4">
+                    <x-input-label for="notify_minutes_before" :value="__('Notify Me Before Event')" />
+                    <select id="notify_minutes_before" name="notify_minutes_before" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                        <option value="0" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 0 ? 'selected' : '' }}>At time of event</option>
+                        <option value="5" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 5 ? 'selected' : '' }}>5 minutes before</option>
+                        <option value="10" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 10 ? 'selected' : '' }}>10 minutes before</option>
+                        <option value="15" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 15 ? 'selected' : '' }}>15 minutes before</option>
+                        <option value="30" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 30 ? 'selected' : '' }}>30 minutes before</option>
+                        <option value="60" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 60 ? 'selected' : '' }}>1 hour before</option>
+                        <option value="180" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 180 ? 'selected' : '' }}>3 hours before</option>
+                        <option value="300" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 300 ? 'selected' : '' }}>5 hours before</option>
+                        <option value="600" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 600 ? 'selected' : '' }}>10 hours before</option>
+                        <option value="720" {{ old('notify_minutes_before', $reminder->notify_minutes_before ?? 0) == 720 ? 'selected' : '' }}>12 hours before</option>
+                        {{-- You can add more options like 1440 for 24 hours before if needed --}}
+                    </select>
+                    <x-input-error :messages="$errors->get('notify_minutes_before')" class="mt-2" />
+                </div>
                         {{-- Guest Emails Section --}}
                         <div>
                             <x-input-label for="guest_emails" :value="__('Invite Guests (Optional)')" class="font-medium text-gray-700" />

@@ -21,6 +21,7 @@ class Reminder extends Model
         'title',
         'description',
         'reminder_time',
+        'notify_minutes_before',
         'guest_emails',
         'google_event_id', // Needed later for GCal sync
     ];
